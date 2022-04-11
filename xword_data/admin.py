@@ -4,7 +4,7 @@ from .models import Clue, Entry, Puzzle
 
 
 class PuzzleAdmin(admin.ModelAdmin):
-    fields = ["title", "publication_date", "byline", "publisher"]
+    fields = ["title", "date", "byline", "publisher"]
 
 
 class EntryAdmin(admin.ModelAdmin):

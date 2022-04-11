@@ -19,6 +19,9 @@ class Entry(models.Model):
     def __str__(self):
         return self.entry_text
 
+    class Meta:
+        verbose_name_plural = "entries"
+
 
 class Clue(models.Model):
     entry = models.ForeignKey(

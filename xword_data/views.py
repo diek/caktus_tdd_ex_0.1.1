@@ -10,7 +10,7 @@ def drill(request):
       clue. The drill view's rendered page should offer the user an "escape hatch" to see the answer
       even if they cannot correctly guess it.
     """
-    return render(request, "xword_data/drill.html", context)
+    return render(request, "xword_data/drill.html")
 
 
 def answer(request):
@@ -22,4 +22,4 @@ def answer(request):
       associated with the clue and a count of how many times that Clue/Entry pair appear in the
       database.
     """
-    return render(request, "xword_data/answer.html", context)
+    return render(request, "xword_data/answer.html")
