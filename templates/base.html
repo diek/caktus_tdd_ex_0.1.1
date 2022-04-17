@@ -5,14 +5,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Crossword puzzle TDD exercise.">
-
     <title>{% block title %}Crossword Exercise{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   </head>
-
   <body>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">
+      Crossword Exercise
+    </h1>
     <!-- Begin page content -->
-    <main role="main" class="container">
       {% block content %}{% endblock %}
-    </main>
+    </div>
+  </section>
   </body>
 </html>

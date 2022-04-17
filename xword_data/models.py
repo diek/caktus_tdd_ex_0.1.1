@@ -16,11 +16,11 @@ class Puzzle(models.Model):
 class Entry(models.Model):
     entry_text = models.CharField(max_length=50, unique=True)
 
-    def __str__(self):
-        return self.entry_text
-
     class Meta:
         verbose_name_plural = "entries"
+
+    def __str__(self):
+        return self.entry_text
 
 
 class Clue(models.Model):
