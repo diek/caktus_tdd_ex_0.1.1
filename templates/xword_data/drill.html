@@ -1,20 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
     <h2>Drill View</h2><br>
-    <form method="get" action="">
+    {% if incorrect_answer %}
+    <strong> Your answer is not correct</strong><br>
+    {% endif %}
+
+    <form method="GET" action="{% url 'drill' %}">
       {% csrf_token %}
       <div class="field">
-      <label class="label">What</label>
+        <label class="label">Make a Guess</label>
+        <div class="control">
+          <input class="input" type="text" name="user_guess" placeholder="Your guess">
+        </div>
+      </div>
+      <input type="hidden" id="postId" name="postId" value="{{clue.id}}">
       <div class="control">
-        <input class="input" type="text" name="answer" placeholder="Your guess">
-        <input type="hidden" id="postId" name="postId" value="{{clue.id}}">
+        <button class="button is-link" name="guess_submitted">Submit</button>
       </div>
-      </div>
-      <div class="control">
-        <button class="button is-link">Submit</button>
-      </div>
-    </form><br>
+    </form>
+    <br>
     <h3>Clue: {{ clue.clue_text}}</h3><br>
     <h3>{{ clue.entry.entry_text|length}} Letters</h3><br>
-    <h3>Puzzle: {{ clue.puzzle }}</h3><br>
+    <h3>Puzzle: {{ clue.puzzle.get_title }}</h3><br>
 {% endblock %}

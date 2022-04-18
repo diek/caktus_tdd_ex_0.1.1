@@ -3,4 +3,10 @@
     <h2>Answer View</h2>
     <h2>Congratulations! You Are Correct!</h2>
     <h2>Answer: {{ correct_answer }} </h2>
+    {% if puzzle_detail.title%}
+        <h2>Title: {{ puzzle_detail.title }}</h2>
+    {% endif %}
+    <h2>Date: {{ puzzle_detail.date }}</h2>
+    <h2>Byline: {{ puzzle_detail.byline }}</h2>
+    <h2>Publisher: {{ puzzle_detail.publisher }}</h2>
 {% endblock %}
