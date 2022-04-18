@@ -48,7 +48,6 @@ def drill(request):
     else:
         incorrect_answer = None
         random_clue = generate_random()
-        print(f"random_clue {random_clue}")
         clue = Clue.objects.get(pk=random_clue)
         return render(request, "xword_data/drill.html", {"clue": clue, "form": form})
 

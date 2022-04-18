@@ -22,4 +22,22 @@
     <h3>Clue: {{ clue.clue_text}}</h3><br>
     <h3>{{ clue.entry.entry_text|length}} Letters</h3><br>
     <h3>Puzzle: {{ clue.puzzle.get_title }}</h3><br>
+
+
+  <div class="control">
+    <button class="button is-link" value="btn" onclick="toggle();" >Show Answer</button>
+  <div class="field">
+
+  <div class="field" id="hidden_answer">
+    <span>{{ clue.entry.entry_text }}</span>
+  </div>
+<script>
+  var toggle = function() {
+  var mydiv = document.getElementById('hidden_answer');
+  if (mydiv.style.display === 'block' || mydiv.style.display === '')
+    mydiv.style.display = 'none';
+  else
+    mydiv.style.display = 'block';
+  }
+</script>
 {% endblock %}
