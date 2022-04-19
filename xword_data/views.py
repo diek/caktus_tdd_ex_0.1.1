@@ -27,17 +27,14 @@ def drill(request):
 
     form = ClueForm(request.GET or None)
     if form.is_valid():
-        guess = form.cleaned_data['user_guess']
-        post_id = request.GET['postId']
-        clue = Clue.objects.get(pk=post_id)
+        guess = form.cleaned_data["answer"]
+        clue_id = request.GET["clue_id"]
+        clue = Clue.objects.get(pk=clue_id)
         correct_answer = clue.entry.entry_text
         if guess.upper() == correct_answer:
-            base_url = reverse("answer")
-            query_string = urlencode(
-                {"correct_answer": correct_answer, "puzzle_id": clue.puzzle_id}
-            )
-            url = f"{base_url}?{query_string}"
-            return redirect(url)
+            # answer_link_url = reverse("xword-answer", kwargs={"clue_id": int(clue_id)})
+            answer_link_url = reverse('xword-answer', args=(clue_id,))
+            return redirect(answer_link_url)
         else:
             incorrect_answer = True
             return render(
@@ -52,7 +49,7 @@ def drill(request):
         return render(request, "xword_data/drill.html", {"clue": clue, "form": form})
 
 
-def answer(request):
+def answer(request, clue_id):
     """
     - **Answer view:** when reached via a successful guess, this view congratulates the user on
       their success and offers up some additional data about the clue.
@@ -66,11 +63,10 @@ def answer(request):
       database.
     """
 
-    correct_answer = request.GET.get("correct_answer")
-    puzzle_id = request.GET.get("puzzle_id")
-    puzzle_detail = Puzzle.objects.get(pk=puzzle_id)
+    clue = Clue.objects.get(pk=clue_id)
+    puzzle_detail = Puzzle.objects.get(pk=clue.puzzle_id)
     return render(
         request,
         "xword_data/answer.html",
-        {"correct_answer": correct_answer, "puzzle_detail": puzzle_detail},
+        {"correct_answer": clue.entry.entry_text, "puzzle_detail": puzzle_detail},
     )

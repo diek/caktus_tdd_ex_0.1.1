@@ -17,7 +17,7 @@ class Puzzle(models.Model):
             return self.title
 
     def __str__(self):
-        return self.title
+        return f"{self.publisher} {self.date}"
 
 
 class Entry(models.Model):
@@ -43,4 +43,4 @@ class Clue(models.Model):
     theme = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.clue_text
+        return f"{self.clue_text} {self.entry.entry_text}"

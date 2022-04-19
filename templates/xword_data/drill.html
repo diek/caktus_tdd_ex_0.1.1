@@ -5,15 +5,15 @@
     <strong> Your answer is not correct</strong><br>
     {% endif %}
 
-    <form method="GET" action="{% url 'drill' %}">
+    <form method="GET" action="{% url 'xword-drill' %}">
       {% csrf_token %}
       <div class="field">
         <label class="label">Make a Guess</label>
         <div class="control">
-          <input class="input" type="text" name="user_guess" placeholder="Your guess">
+          <input class="input" type="text" name="answer" placeholder="Your guess">
         </div>
       </div>
-      <input type="hidden" id="postId" name="postId" value="{{clue.id}}">
+      <input type="hidden" id="clue_id" name="clue_id" value="{{clue.id}}">
       <div class="control">
         <button class="button is-link" name="guess_submitted">Submit</button>
       </div>
